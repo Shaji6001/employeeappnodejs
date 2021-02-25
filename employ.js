@@ -16,17 +16,28 @@ apps.post('/add', async(req, res)=>{
 
     try
     {
-        
-      var data= new employModel(req.body)
-
+        var data= req.body;
+      var data= new employModel(req.body);
       var result= await data.save();
-      res.json(result)
+      console.log(result);
+      res.json(result);
     }
     catch(error){
 
         res.status(500).send(error);
 
     }
+
+    apps.get('/viewall',async(req,res)=>{
+        try
+        {
+            var result= await employModel.find().exec();
+            res.json(result);
+        }
+        catch(error){res.status(500).send(error)
+
+        }
+    })
 })
  apps.post('/search', async(req, res)=>{
      try
@@ -41,8 +52,6 @@ apps.post('/add', async(req, res)=>{
 
      }
  })
-
-
 
 
 
@@ -87,7 +96,6 @@ apps.post('/update', async(req,res)=>{
     }
 
 })
-
 
 
 

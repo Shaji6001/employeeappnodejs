@@ -14,7 +14,7 @@ var employeeSchema= new mongoose.Schema({
     employeeCoName:{type:String}
 
 })
-var employModel= new mongoose.model("employs",employeeSchema);
+var employModel=  mongoose.model("employees",employeeSchema);
 
 module.exports={employModel}
 
